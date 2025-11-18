@@ -1,27 +1,6 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import { useSwarmSimulation } from './hooks/useSwarmSimulation';
-import { WaspIcon, BeeIcon } from './components/Icons';
-import type { Boid } from './types';
-
-const Insect: React.FC<{ boid: Boid, children: React.ReactNode }> = ({ boid, children }) => {
-    return (
-        <div
-            className="absolute"
-            style={{
-                width: `${boid.size}px`,
-                height: `${boid.size}px`,
-                left: -boid.size / 2,
-                top: -boid.size / 2,
-                transform: `translate(${boid.position.x}px, ${boid.position.y}px) rotate(${boid.angle}deg)`,
-                transition: 'transform 16ms linear',
-            }}
-        >
-            {children}
-        </div>
-    );
-};
-
 
 const App: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -53,14 +32,32 @@ const App: React.FC = () => {
                 <p className="text-slate-300">3 wasps pursued by swarms of bees.</p>
             </div>
             {wasps.map((wasp) => (
-                <Insect key={wasp.id} boid={wasp}>
-                    <WaspIcon className="w-full h-full" />
-                </Insect>
+                <div
+                    key={wasp.id}
+                    className="absolute rounded-full"
+                    style={{
+                        width: `${wasp.size}px`,
+                        height: `${wasp.size}px`,
+                        backgroundColor: '#facc15', // Yellow-400 for wasps
+                        left: -wasp.size / 2,
+                        top: -wasp.size / 2,
+                        transform: `translate(${wasp.position.x}px, ${wasp.position.y}px)`,
+                    }}
+                />
             ))}
             {bees.map((bee) => (
-                <Insect key={bee.id} boid={bee}>
-                    <BeeIcon className="w-full h-full" />
-                </Insect>
+                <div
+                    key={bee.id}
+                    className="absolute rounded-full"
+                    style={{
+                        width: `${bee.size}px`,
+                        height: `${bee.size}px`,
+                        backgroundColor: '#f97316', // Orange-500 for bees
+                        left: -bee.size / 2,
+                        top: -bee.size / 2,
+                        transform: `translate(${bee.position.x}px, ${bee.position.y}px)`,
+                    }}
+                />
             ))}
         </main>
     );

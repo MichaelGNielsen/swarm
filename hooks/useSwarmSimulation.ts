@@ -38,14 +38,16 @@ export const useSwarmSimulation = (width: number, height: number) => {
     if (width > 0 && height > 0) {
       const newWasps: Wasp[] = [];
       for (let i = 0; i < NUM_WASPS; i++) {
-        newWasps.push(createBoid(width, height, 30, 2.5, 0.05, {}));
+        // Wasps are now 2px and faster
+        newWasps.push(createBoid(width, height, 2, 3.5, 0.05, {}));
       }
       setWasps(newWasps);
 
       const newBees: Bee[] = [];
       for (let i = 0; i < NUM_WASPS * BEES_PER_WASP; i++) {
+        // Bees are now 2px and faster than wasps
         newBees.push(
-          createBoid(width, height, 15, 4, 0.2, { targetWaspId: null })
+          createBoid(width, height, 2, 4, 0.2, { targetWaspId: null })
         );
       }
       setBees(newBees);
@@ -123,7 +125,7 @@ export const useSwarmSimulation = (width: number, height: number) => {
     };
 
     const separate = (bee: Bee, allBees: Bee[]) => {
-      const desiredSeparation = bee.size * 2;
+      const desiredSeparation = bee.size * 2.5; // Increased separation slightly for pixels
       let sum = VectorOps.create();
       let count = 0;
       for (const other of allBees) {
