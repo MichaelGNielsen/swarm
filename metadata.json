@@ -1,0 +1,5 @@
+{
+  "name": "Wasp & Bee Swarm Simulator",
+  "description": "An interactive simulation of three wasps being chased by swarms of bees. The insects exhibit natural, flocking-like behavior, and bees will dynamically switch targets to the nearest wasp.",
+  "requestFramePermissions": []
+}
