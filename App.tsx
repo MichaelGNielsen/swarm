@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect, useState } from 'react';
 import { useSwarmSimulation } from './hooks/useSwarmSimulation';
 
@@ -25,7 +24,7 @@ const App: React.FC = () => {
     return (
         <main
             ref={containerRef}
-            className="relative w-screen h-screen bg-gradient-to-br from-sky-800 via-slate-900 to-black"
+            className="relative w-screen h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-black"
         >
             <div className="absolute top-4 left-4 text-white p-4 bg-black/30 rounded-lg backdrop-blur-sm">
                 <h1 className="text-2xl font-bold text-yellow-300">Swarm Simulator</h1>
